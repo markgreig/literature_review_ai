@@ -19,9 +19,7 @@ const anthropic = new Anthropic({
 });
 
 // Configure CORS to allow requests from your React app (default port 3000)
-app.use(cors({
-    origin: 'http://localhost:3000' 
-}));
+app.use(cors());
 app.use(express.json());
 
 // --- ENDPOINTS ---
