@@ -6,7 +6,7 @@ const Anthropic = require('@anthropic-ai/sdk');
 require('dotenv').config();
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // Configure Multer to store files in memory (as buffers)
 const upload = multer(); 
