@@ -34,7 +34,7 @@ app.post('/api/upload-pdf', upload.single('file'), async (req, res) => {
     const fullText = data.text;
 
     const completion = await client.chat.completions.create({
-      model: "llama-3.1-sonar-small-128k-online", // Perplexity model
+      model: "sonar", // Perplexity model
       messages: [
         { role: "system", content: "You are a JSON extractor. Return ONLY valid JSON." },
         { role: "user", content: `Extract JSON (title, authors array, year, journal, abstract, methodology array) from: ${fullText.substring(0, 3000)}` }
@@ -59,7 +59,7 @@ app.post('/api/analyze', async (req, res) => {
   
   try {
     const completion = await client.chat.completions.create({
-      model: "llama-3.1-sonar-large-128k-online",
+      model: "sonar-pro",
       messages: [
         { role: "system", content: "You are a research assistant. Return ONLY valid JSON." },
         { role: "user", content: `Analyze: ${title} - ${abstract}. Return JSON with: keyFindings (3 strings), relevanceScore (int), gaps (2 strings), keywords (5 strings).` }
